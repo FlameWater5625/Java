@@ -1,17 +1,26 @@
 // creer une classe voiture
 public class voiture {
-    // attributs
-    public String couleur;
-    public String marque;
-    public int annee;
-    // methodes
-    public void demarrer() {
-        System.out.println("La voiture demarre");
+    String marque
+    String couleur
+    String modele
+
+    public voiture(String marque, String couleur, String modele) {
+        this.marque = marque
+        this.couleur = couleur
+        this.modele = modele
     }
-    public void accelerer() {
-        System.out.println("La voiture accelere");
+
+    void demarrer() {
+        System.out.println("la voiture demarre")
     }
-    public void arreter() {
-        System.out.println("La voiture arrete");
+
+    void accelerer() {
+        System.out.println("la voiture accellere")
     }
+
+    void ralentir() {
+        System.out.println("la voiture ralentit")
+    }
+
+    public class main(String[] args) { 
 }
