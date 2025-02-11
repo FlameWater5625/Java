@@ -1,36 +1,36 @@
-public class comptebancaire {
-    // Attributs privés
+public class CompteBancaire {
     private double solde;
     private String titulaire;
 
-    
-    public comptebancaire(String titulaire, double soldeInitial) {
+    public CompteBancaire(String titulaire, double soldeInitial) {
         this.titulaire = titulaire;
         this.solde = soldeInitial;
     }
 
-    /**
-     * Depose un montant sur le compte.
-     * @param montant montant à déposer
-     */
     public void deposer(double montant) {
         if (montant > 0) {
             solde += montant;
-            System.out.println(montant + " € deposes. Nouveau solde : " + solde + " €");
+            System.out.println(montant + " € déposés. Nouveau solde : " + solde + " €");
         } else {
-            System.out.println("Le montant a deposer doit etre pos");
+            System.out.println("Le montant à déposer doit être positif.");
         }
     }
 
-   // retirer argent
     public void retirer(double montant) {
         if (montant > 0 && montant <= solde) {
             solde -= montant;
-            System.out.println(montant + " € retires. Nouveau solde : " + solde + " €");
+            System.out.println(montant + " € retirés. Nouveau solde : " + solde + " €");
         } else if (montant > solde) {
             System.out.println("Fonds insuffisants. Solde actuel : " + solde + " €");
         } else {
-            System.out.println("Le montant a retirer doit etre positif.");
+            System.out.println("Le montant à retirer doit être positif.");
         }
+    }
+
+    public static void main(String[] args) {
+        CompteBancaire compte = new CompteBancaire("Jean Dupont", 1000.0);
+        compte.deposer(500.0);
+        compte.retirer(200.0);
+        compte.retirer(1500.0);
     }
 }
