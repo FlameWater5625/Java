@@ -13,7 +13,7 @@ public class App {
         try {
             // Établir la connexion
             connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
-            System.out.println("Connexion réussie !");
+            System.out.println("Connexion réussie!");
             
         } catch (SQLException e) {
             System.out.println("Erreur de connexion : " + e.getMessage());
@@ -23,7 +23,7 @@ public class App {
 			        connexion.close(); 
 			        System.out.println("Connexion fermée avec succès."); 
 			    } catch (SQLException e) { 
-				    System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage()); 
+				    System.err.println("Errur lors de la fermeture de connection : " + e.getMessage()); 
 				} 
 			} 
 		}
