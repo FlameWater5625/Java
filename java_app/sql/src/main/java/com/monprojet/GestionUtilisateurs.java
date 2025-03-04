@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GestionUtilisateurs {
     private List<Utilisateur> listUser;
-    private Connexion link;
+    private Connexion link; 
 
     public GestionUtilisateurs(Connexion connexion) {
         this.listUser = new ArrayList<>();
