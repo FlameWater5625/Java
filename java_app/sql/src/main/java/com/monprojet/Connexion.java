@@ -11,7 +11,13 @@ public class Connexion {
     public Connection connexion;
 
     public void connect() throws SQLException {
-        connexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC introuvable.");
+            throw new SQLException(e);
+        }
     }
 
     public void close() throws SQLException {

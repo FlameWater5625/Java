@@ -31,7 +31,8 @@ public class Utilisateur {
         this.email = email;
     }
 
-    public void __String() {
-        System.out.println("Nom: " + nom + ", Email: " + email);
+    @Override
+    public String toString() {
+        return "Nom: " + nom + ", Email: " + email;
     }
 }

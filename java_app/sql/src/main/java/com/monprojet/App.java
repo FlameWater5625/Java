@@ -1,5 +1,6 @@
 package com.monprojet;
 
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Connexion connexion = new Connexion();
+        
         try {
             connexion.connect();
             GestionUtilisateurs gestionUtilisateurs = new GestionUtilisateurs(connexion);
@@ -20,8 +22,13 @@ public class App {
                 System.out.println("4: Afficher tous les utilisateurs");
                 System.out.println("5: Quitter");
                 System.out.print("Choisissez une option : ");
+
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Veuillez entrer un nombre valide.");
+                    scanner.next();
+                }
                 choix = scanner.nextInt();
-                scanner.nextLine(); // Pour consommer la nouvelle ligne
+                scanner.nextLine(); // Consommer la nouvelle ligne
 
                 switch (choix) {
                     case 1:
@@ -34,13 +41,22 @@ public class App {
                         break;
                     case 2:
                         System.out.print("Entrez l'ID de l'utilisateur à supprimer : ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.println("Veuillez entrer un nombre valide.");
+                            scanner.next();
+                        }
                         int idSupprimer = scanner.nextInt();
+                        scanner.nextLine();
                         gestionUtilisateurs.supprimerUtilisateur(idSupprimer);
                         break;
                     case 3:
                         System.out.print("Entrez l'ID de l'utilisateur à modifier : ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.println("Veuillez entrer un nombre valide.");
+                            scanner.next();
+                        }
                         int idModifier = scanner.nextInt();
-                        scanner.nextLine(); // Pour consommer la nouvelle ligne
+                        scanner.nextLine();
                         System.out.print("Entrez le nouveau nom : ");
                         String nouveauNom = scanner.nextLine();
                         System.out.print("Entrez le nouvel email : ");
@@ -57,16 +73,15 @@ public class App {
                         System.out.println("Option invalide. Veuillez réessayer.");
                 }
             } while (choix != 5);
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Erreur de connexion: " + e.getMessage());
         } finally {
+            scanner.close();
             try {
                 connexion.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.err.println("Erreur lors de la fermeture de la connexion.");
             }
         }
-        scanner.close();
     }
 }
