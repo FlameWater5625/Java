@@ -11,10 +11,11 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         // Créer un label
         Label label = new Label("Bonjour, JavaFX !");
+        label.getStyleClass().add("test");
 
         // Créer une scène avec le label
         Scene scene = new Scene(label, 300, 200);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/main.css").toExternalForm());
 
         // Configurer la fenêtre principale
         primaryStage.setTitle("Ma Première Application JavaFX");
